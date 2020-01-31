@@ -7,10 +7,15 @@ import PropTypes from 'prop-types';
 import './inputField.scss';
 
 // == Composant
-const InputField = ({ inputField, searchLoading, changeInputValue }) => {
+const InputField = ({ 
+    inputField, searchLoading, changeInputValue, filtredPokemonsData,
+    showPokemons,
+}) => {
     const handleChange = e => {
         const { value, name } = e.target;
         changeInputValue(value, name);
+        filtredPokemonsData(value);
+        showPokemons();
     }
     return (
         <div id="inputField">
@@ -29,6 +34,8 @@ InputField.propTypes = {
     inputField: PropTypes.string.isRequired,
     changeInputValue: PropTypes.func.isRequired,
     searchLoading: PropTypes.bool.isRequired,
+    filtredPokemonsData: PropTypes.func.isRequired,
+    showPokemons: PropTypes.func.isRequired,
 };
 
 // == Export

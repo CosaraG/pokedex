@@ -14,9 +14,7 @@ const mapStateToProps = ({ pokemonsData }) => ({
 
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  // changeInputValue: (value, name) => {
-  //   dispatch(changeInputValue(value, name));
-  // },
+
 });
 
 // Container

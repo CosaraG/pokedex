@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import InputField from 'src/components/InputField';
 
 // Action Creators
-import { doSomething, changeInputValue } from 'src/store/reducer';
+import { filtredPokemonsData, changeInputValue, showPokemons } from 'src/store/reducer';
 
 const mapStateToProps = ({ inputField, searchLoading }) => ({
   inputField,
@@ -16,8 +16,15 @@ const mapStateToProps = ({ inputField, searchLoading }) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   changeInputValue: (value, name) => {
-    dispatch(changeInputValue(value, name));
+    dispatch(changeInputValue(value, name));    
   },
+  filtredPokemonsData: (value) => {
+    dispatch(filtredPokemonsData(value));
+  },
+  showPokemons: () => {
+    dispatch(showPokemons());
+  },
+
 });
 
 // Container
