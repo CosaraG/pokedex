@@ -11,6 +11,7 @@ const PokemonsList = () => (
   <div id="pokemonsList">
     <Card.Group itemsPerRow={4} className="pokemonsList-container">
       <PokemonCard />
+      <PokemonCard />
     </Card.Group>
   </div>
 );

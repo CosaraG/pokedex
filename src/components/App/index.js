@@ -3,7 +3,7 @@ import React from 'react';
 
 // == Import : local
 import './app.scss';
-import InputField from 'src/components/InputField';
+import InputField from 'src/containers/InputField';
 import PokemonsList from 'src/components/PokemonsList';
 
 // == Composant

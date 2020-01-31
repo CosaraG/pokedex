@@ -1,10 +1,15 @@
+import data from 'src/data/pokemons.js';
+
 // == Initial State
 const initialState = {
-  message: 'Hello',
+  inputField: '',
+  searchLoading: false,
+  pokemonsData: data,
 };
 
 // == Types
 const DO_SOMETHING = 'DO_SOMETHING';
+const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -13,6 +18,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         message: action.message,
+      };
+    case CHANGE_INPUT_VALUE:
+      return {
+        ...state,
+        [action.name]: action.value,
       };
 
     default:
@@ -24,6 +34,11 @@ const reducer = (state = initialState, action = {}) => {
 export const doSomething = message => ({
   type: DO_SOMETHING,
   message,
+});
+export const changeInputValue = (value, name) => ({
+  type: CHANGE_INPUT_VALUE,
+  value,
+  name,
 });
 
 
