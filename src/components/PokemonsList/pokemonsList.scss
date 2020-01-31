@@ -1,0 +1,16 @@
+#pokemonsList {    
+    width: 90%;
+    margin: 3em auto;
+    .pokemonsList-container {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        &-item {
+            width: 12em;
+            &-image {
+                width: 12em;
+                height: 12em;
+            }
+        }
+    }
+}
