@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import PokemonsList from 'src/components/PokemonsList';
 
 // Action Creators
-import { } from 'src/store/reducer';
+//import { } from 'src/store/reducer';
 
 const mapStateToProps = ({ pokemonsData }) => ({
-  pokemonsData,  
+  pokemonsData,
+  
 });
 
 

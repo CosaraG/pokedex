@@ -1,15 +1,19 @@
-import data from 'src/data/pokemons.js';
+//import data from 'src/data/pokemons.js';
 
 // == Initial State
 const initialState = {
   inputField: '',
   searchLoading: false,
-  pokemonsData: data,
+  pokemonsData: [],
 };
 
 // == Types
-const DO_SOMETHING = 'DO_SOMETHING';
 const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
+const DO_SOMETHING = 'DO_SOMETHING';
+const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA';
+export const GO_SEARCH_POKEMONS = 'GO_SEARCH_POKEMONS';
+
+
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -22,7 +26,12 @@ const reducer = (state = initialState, action = {}) => {
     case CHANGE_INPUT_VALUE:
       return {
         ...state,
-        [action.name]: action.value,
+        pokemonsData: action.results,
+      };
+    case PUT_POKEMONS_IN_DATA:
+      return {
+        ...state,
+        pokemonsData: action.results,
       };
 
     default:
@@ -40,6 +49,14 @@ export const changeInputValue = (value, name) => ({
   value,
   name,
 });
+export const goSearchPokemons = () => ({
+  type: GO_SEARCH_POKEMONS,
+});
+export const putPokemonsInData = (results) => ({
+  type: PUT_POKEMONS_IN_DATA,
+  results,
+});
+
 
 
 // == Selectors
