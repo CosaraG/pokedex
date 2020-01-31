@@ -26,7 +26,7 @@ const reducer = (state = initialState, action = {}) => {
     case CHANGE_INPUT_VALUE:
       return {
         ...state,
-        pokemonsData: action.results,
+        [action.name]: action.value,
       };
     case PUT_POKEMONS_IN_DATA:
       return {

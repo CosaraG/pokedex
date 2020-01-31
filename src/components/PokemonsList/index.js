@@ -21,7 +21,7 @@ const PokemonsList = ({ pokemonsData }) => {
 
   return (
     <div id="pokemonsList">
-      <Card.Group itemsPerRow={4} className="pokemonsList-container">
+      <Card.Group itemsPerRow={8} className="pokemonsList-container">
        {
           pokemonsData.map(item => (
             <PokemonCard key={item.id} {...item} />
