@@ -1,12 +1,12 @@
 #pokemonsList {    
     width: 80%;
-    margin: 4em auto;
+    margin: 3em auto;
     .pokemonsList-container {
         display: flex;
         flex-wrap: wrap;
         &-item {
             width: 12em;
-            margin: 0 1em;
+            margin: 1em;
             &-image {
                 width: 12em;
                 height: 12em;
