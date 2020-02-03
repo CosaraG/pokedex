@@ -1,0 +1,10 @@
+.loaderComponent {
+    height: 100vh;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    &-loader {
+        margin: 4em;
+    }
+}

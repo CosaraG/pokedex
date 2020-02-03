@@ -3,6 +3,7 @@
 // == Initial State
 const initialState = {
   inputField: '',
+  loadingStatus: true,
   pokemonsData: [],
   pokemonsWithId: [],
   filtredPokemonsData: [],
@@ -10,6 +11,8 @@ const initialState = {
 
 // == Types
 const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
+const LOADING_TRUE = 'LOADING_TRUE';
+const LOADING_FALSE = 'LOADING_FALSE';
 const PUT_DATA_WITH_ID = 'PUT_DATA_WITH_ID';
 const PUT_FILTRED_DATA = 'PUT_FILTRED_DATA';
 const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA';
@@ -24,6 +27,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case LOADING_TRUE:
+      return {
+        ...state,
+        loadingStatus: true,
+      };
+    case LOADING_FALSE:
+      return {
+        ...state,
+        loadingStatus: false,
       };
     case PUT_FILTRED_DATA:
       let filtredData = state.pokemonsData.filter(item => item.name.search(action.character) != -1);
@@ -71,8 +84,14 @@ export const filtredPokemonsData = (character) => ({
   type: PUT_FILTRED_DATA,
   character,  
 });
+export const finishLoading = () => ({
+  type: LOADING_FALSE,
+});
 export const goSearchPokemons = () => ({
   type: GO_SEARCH_POKEMONS,
+});
+export const startLoading = () => ({
+  type: LOADING_TRUE,
 });
 export const putPokemonsInData = (results) => ({
   type: PUT_POKEMONS_IN_DATA,

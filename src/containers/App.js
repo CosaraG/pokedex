@@ -9,7 +9,9 @@ import App from 'src/components/App';
 // Action Creators
 import { goSearchPokemons, filtredPokemonsData } from 'src/store/reducer';
 
-const mapStateToProps = null;
+const mapStateToProps = (state) => ({
+  loadingStatus: state.loadingStatus,
+}) ;
 
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
