@@ -9,9 +9,10 @@ import InputField from 'src/containers/InputField';
 import PokemonsList from 'src/containers/PokemonsList';
 
 // == Composant
-const App = ({ SearchPokemons }) => {
+const App = ({ SearchPokemons, filtredPokemonsData }) => {
   useEffect(() => {
     SearchPokemons();
+    //filtredPokemonsData();
   }, []);
   return (
     <div id="app">

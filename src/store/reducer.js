@@ -5,6 +5,7 @@ const initialState = {
   inputField: '',
   searchLoading: false,
   pokemonsData: [],
+  pokemonsWithId: [],
   filtredPokemonsData: [],
 };
 
@@ -15,6 +16,8 @@ const PUT_FILTRED_DATA = 'PUT_FILTRED_DATA';
 const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA';
 const SHOW_POKEMONS = 'SHOW_POKEMONS';
 export const GO_SEARCH_POKEMONS = 'GO_SEARCH_POKEMONS';
+
+const PUT_DATA_WITH_ID = 'PUT_DATA_WITH_ID';
 
 
 
@@ -37,7 +40,7 @@ const reducer = (state = initialState, action = {}) => {
       
       return {
         ...state,
-        pokemonsData: filtredData,
+        filtredPokemonsData: filtredData,
       };
     case PUT_POKEMONS_IN_DATA:
       return {
@@ -47,7 +50,22 @@ const reducer = (state = initialState, action = {}) => {
     case SHOW_POKEMONS:
       return {
         ...state,
-        //pokemonsData: state.filtredPokemonsData,
+        pokemonsWithId: state.filtredPokemonsData,
+      };
+
+    case PUT_DATA_WITH_ID:
+      const res = state.pokemonsData.map(item => {
+        const newStr = item.url.slice(34,-1);
+       // console.log(newStr);
+        item.id = newStr;
+       //console.log(item);   
+      });  
+      console.log('salllut', state.pokemonsData);
+       
+      return {
+        ...state,
+        pokemonsWithId: state.pokemonsData,
+
       };
 
     default:
@@ -74,6 +92,10 @@ export const putPokemonsInData = (results) => ({
 });
 export const showPokemons = () => ({
   type: SHOW_POKEMONS,
+});
+
+export const putDataWithId = () => ({
+  type: PUT_DATA_WITH_ID,
 });
 
 

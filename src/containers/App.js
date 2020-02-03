@@ -7,7 +7,7 @@ console.log('container');
 import App from 'src/components/App';
 
 // Action Creators
-import { goSearchPokemons } from 'src/store/reducer';
+import { goSearchPokemons, filtredPokemonsData } from 'src/store/reducer';
 
 const mapStateToProps = ({  }) => ({
   
@@ -18,6 +18,9 @@ const mapStateToProps = ({  }) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   SearchPokemons: () => {
     dispatch(goSearchPokemons());
+  },
+  filtredPokemonsData: () => {
+    dispatch(filtredPokemonsData());
   },
 });
 
