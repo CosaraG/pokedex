@@ -2,17 +2,15 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-
 // == Import : local
 import './app.scss';
 import InputField from 'src/containers/InputField';
 import PokemonsList from 'src/containers/PokemonsList';
 
 // == Composant
-const App = ({ SearchPokemons, filtredPokemonsData }) => {
+const App = ({ searchPokemons }) => {
   useEffect(() => {
-    SearchPokemons();
-    //filtredPokemonsData();
+    searchPokemons();
   }, []);
   return (
     <div id="app">
@@ -22,7 +20,8 @@ const App = ({ SearchPokemons, filtredPokemonsData }) => {
   );
 };
 
-PokemonsList.propTypes = {
+App.propTypes = {
+  searchPokemons: PropTypes.func.isRequired,
 };
 
 // == Export

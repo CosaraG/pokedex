@@ -5,21 +5,14 @@ import { connect } from 'react-redux';
 import PokemonsList from 'src/components/PokemonsList';
 
 // Action Creators
-import { putDataWithId } from 'src/store/reducer';
+// import { } from 'src/store/reducer';
 
-const mapStateToProps = ({ pokemonsData, filtredPokemonsData, pokemonsWithId }) => ({
-  pokemonsData,
-  filtredPokemonsData,
+const mapStateToProps = ({ pokemonsWithId }) => ({
   pokemonsWithId,
-  
 });
 
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  putDataWithId: (value) => {
-    dispatch(putDataWithId(value));
-  },
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 // Container
 const PokemonsListContainer = connect(

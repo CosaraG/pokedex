@@ -8,8 +8,7 @@ import './inputField.scss';
 
 // == Composant
 const InputField = ({ 
-    inputField, searchLoading, changeInputValue, filtredPokemonsData,
-    showPokemons,
+    inputField, changeInputValue, filtredPokemonsData, showPokemons,
 }) => {
     const handleChange = e => {
         const { value, name } = e.target;
@@ -20,7 +19,6 @@ const InputField = ({
     return (
         <div id="inputField">
             <Input 
-              loading={searchLoading}
               value={inputField}
               name="inputField"
               placeholder='Search...'
@@ -33,7 +31,6 @@ const InputField = ({
 InputField.propTypes = {
     inputField: PropTypes.string.isRequired,
     changeInputValue: PropTypes.func.isRequired,
-    searchLoading: PropTypes.bool.isRequired,
     filtredPokemonsData: PropTypes.func.isRequired,
     showPokemons: PropTypes.func.isRequired,
 };

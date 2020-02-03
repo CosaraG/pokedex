@@ -7,10 +7,8 @@ import InputField from 'src/components/InputField';
 // Action Creators
 import { filtredPokemonsData, changeInputValue, showPokemons } from 'src/store/reducer';
 
-const mapStateToProps = ({ inputField, searchLoading }) => ({
+const mapStateToProps = ({ inputField }) => ({
   inputField,
-  searchLoading,
-  
 });
 
 
@@ -24,7 +22,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   showPokemons: () => {
     dispatch(showPokemons());
   },
-
 });
 
 // Container

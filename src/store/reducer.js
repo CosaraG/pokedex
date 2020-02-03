@@ -3,7 +3,6 @@
 // == Initial State
 const initialState = {
   inputField: '',
-  searchLoading: false,
   pokemonsData: [],
   pokemonsWithId: [],
   filtredPokemonsData: [],
@@ -11,24 +10,16 @@ const initialState = {
 
 // == Types
 const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
-const DO_SOMETHING = 'DO_SOMETHING';
+const PUT_DATA_WITH_ID = 'PUT_DATA_WITH_ID';
 const PUT_FILTRED_DATA = 'PUT_FILTRED_DATA';
 const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA';
 const SHOW_POKEMONS = 'SHOW_POKEMONS';
 export const GO_SEARCH_POKEMONS = 'GO_SEARCH_POKEMONS';
 
-const PUT_DATA_WITH_ID = 'PUT_DATA_WITH_ID';
-
-
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
-      return {
-        ...state,
-        message: action.message,
-      };
     case CHANGE_INPUT_VALUE:
       return {
         ...state,
@@ -36,8 +27,7 @@ const reducer = (state = initialState, action = {}) => {
       };
     case PUT_FILTRED_DATA:
       let filtredData = state.pokemonsData.filter(item => item.name.search(action.character) != -1);
-      console.log('filtred data', filtredData);
-      
+      //console.log('filtred data', filtredData);      
       return {
         ...state,
         filtredPokemonsData: filtredData,
@@ -54,18 +44,16 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case PUT_DATA_WITH_ID:
-      const res = state.pokemonsData.map(item => {
+      state.pokemonsData.map(item => {
         const newStr = item.url.slice(34,-1);
-       // console.log(newStr);
+        // console.log(newStr);
         item.id = newStr;
-       //console.log(item);   
+        //console.log(item);   
       });  
-      console.log('salllut', state.pokemonsData);
-       
+      //console.log('salllut', state.pokemonsData);       
       return {
         ...state,
         pokemonsWithId: state.pokemonsData,
-
       };
 
     default:
@@ -74,14 +62,14 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // == Action Creators
-export const doSomething = message => ({
-  type: DO_SOMETHING,
-  message,
-});
 export const changeInputValue = (value, name) => ({
   type: CHANGE_INPUT_VALUE,
   value,
   name,
+});
+export const filtredPokemonsData = (character) => ({
+  type: PUT_FILTRED_DATA,
+  character,  
 });
 export const goSearchPokemons = () => ({
   type: GO_SEARCH_POKEMONS,
@@ -98,15 +86,8 @@ export const putDataWithId = () => ({
   type: PUT_DATA_WITH_ID,
 });
 
-
-
 // == Selectors
 //const filtredPokemonsData = state
-export const filtredPokemonsData = (character) => ({
-  //const filtredData = data.filter(item => {item.name.search(character) != -1});
-  type: PUT_FILTRED_DATA,
-  character,  
-});
 
 // == Export
 export default reducer;
