@@ -7,22 +7,33 @@ const initialState = {
   pokemonsData: [],
   pokemonsWithId: [],
   filtredPokemonsData: [],
+  pokemonId: '',
+  pokDetailsArray: [],
 };
 
 // == Types
+const DO_SOMETHING = 'DO_SOMETHING';
 const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
 const LOADING_TRUE = 'LOADING_TRUE';
 const LOADING_FALSE = 'LOADING_FALSE';
 const PUT_DATA_WITH_ID = 'PUT_DATA_WITH_ID';
+const PUT_ID_IN_STORE = 'PUT_ID_IN_STORE';
 const PUT_FILTRED_DATA = 'PUT_FILTRED_DATA';
 const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA';
+const PUT_POKS_IN_ARRAY = 'PUT_POKS_IN_ARRAY';
 const SHOW_POKEMONS = 'SHOW_POKEMONS';
 export const GO_SEARCH_POKEMONS = 'GO_SEARCH_POKEMONS';
+export const SEARCH_DETAILS = 'SEARCH_DETAILS';
 
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case DO_SOMETHING:
+      return {
+        ...state,
+        message: action.message,
+      };
     case CHANGE_INPUT_VALUE:
       return {
         ...state,
@@ -45,10 +56,24 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         filtredPokemonsData: filtredData,
       };
+    case PUT_ID_IN_STORE:
+      return {
+        ...state,
+        pokemonId: action.id,
+      };
+    
     case PUT_POKEMONS_IN_DATA:
       return {
         ...state,
         pokemonsData: action.results,
+      };
+    case PUT_POKS_IN_ARRAY:
+      return {
+        ...state,
+        pokDetailsArray: [
+          ...state.pokDetailsArray,
+          action.data,
+        ],  
       };
     case SHOW_POKEMONS:
       return {
@@ -75,6 +100,10 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // == Action Creators
+export const doSomething = message => ({
+  type: DO_SOMETHING,
+  message,
+});
 export const changeInputValue = (value, name) => ({
   type: CHANGE_INPUT_VALUE,
   value,
@@ -103,6 +132,17 @@ export const showPokemons = () => ({
 
 export const putDataWithId = () => ({
   type: PUT_DATA_WITH_ID,
+});
+export const searchDetails = () => ({
+  type: SEARCH_DETAILS,
+});
+export const putIdInStore = (id) => ({
+  type: PUT_ID_IN_STORE,
+  id,
+});
+export const putPoksInArray = (data) => ({
+  type: PUT_POKS_IN_ARRAY,
+  data,
 });
 
 // == Selectors

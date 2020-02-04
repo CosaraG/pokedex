@@ -7,9 +7,9 @@ import { Card, Image } from 'semantic-ui-react'
 import './pokemonsList.scss';
 
 // == Composant
-const PokemonCard = ({ name, id, searchDetails }) => (
+const PokemonCard = ({ name, id }) => (
   <>
-    <Card className="pokemonsList-container-item" onClick={searchDetails(id)} >
+    <Card className="pokemonsList-container-item">
       <Image 
         className="pokemonsList-container-item-image"
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
@@ -26,7 +26,6 @@ const PokemonCard = ({ name, id, searchDetails }) => (
 PokemonCard.propTypes = {
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    searchDetails: PropTypes.func.isRequired,
 };
 
 // == Export

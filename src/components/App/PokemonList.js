@@ -1,20 +1,22 @@
 // == Import : npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'semantic-ui-react'
 
 // == Import : local
 import './pokemonsList.scss';
-import PokemonCard from './PokemonCard';
+import PokemonCard from 'src/components/PokemonsList/PokemonCard';
 
 // == Composant
-const PokemonsList = ({ pokemonsWithId, searchDetails }) => {
+const PokemonsList = ({ pokemonsWithId, message }) => {
+  console.log('message', message);
+  
   return (
-    <div id="pokemonsList"  >
+    <div id="pokemonsList">
       <Card.Group itemsPerRow={8} className="pokemonsList-container">
        {
           pokemonsWithId.map((item) => (
-            <PokemonCard key={item.id} {...item} searchDetails={searchDetails} />
+            <PokemonCard key={item.id} {...item} message={message} />
           ))
         }
       </Card.Group>
@@ -24,7 +26,7 @@ const PokemonsList = ({ pokemonsWithId, searchDetails }) => {
 
 PokemonsList.propTypes = {
   pokemonsWithId: PropTypes.array.isRequired,
-  searchDetails: PropTypes.func.isRequired,
+  //searchDetails: PropTypes.func.isRequired,
 };
 
 // == Export
