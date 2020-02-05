@@ -1,24 +1,23 @@
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types'
-import { Card, Image } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 // == Import : local
 import './pokemonsList.scss';
 
+import CardImage from 'src/components/pokemonsList/CardImage';
+import CardDetails from 'src/components/pokemonsList/CardDetails';
+
 // == Composant
-const PokemonCard = ({ name, id, searchDetails }) => (
+const PokemonCard = ({ name, id, face, searchDetails }) => (
   <>
     <Card className="pokemonsList-container-item" onClick={searchDetails(id)} >
-      <Image 
-        className="pokemonsList-container-item-image"
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-        wrapped
-        ui={false}
-      />
+      {face && <CardImage id={id} />}
+      {!face && <CardDetails id={id} />}   
       <Card.Content extra>
         <Card.Header className="pokemonsList-container-item-name">{name}</Card.Header>
-      </Card.Content>        
+      </Card.Content>    
     </Card>
   </>
 );
@@ -26,6 +25,7 @@ const PokemonCard = ({ name, id, searchDetails }) => (
 PokemonCard.propTypes = {
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
+    face: PropTypes.bool.isRequired,
     searchDetails: PropTypes.func.isRequired,
 };
 

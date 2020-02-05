@@ -35,8 +35,14 @@ const logMiddleware = store => next => (action) => {
         .then(response => {
            console.log('res',response.data);
            const res = {
-            stats: response.data.stats,
-            weight: response.data.weight
+            id: response.data.id,
+            speedName: response.data.stats[0].stat.name,
+            speedStat: response.data.stats[0].base_stat,
+            defenceName: response.data.stats[3].stat.name,
+            defenceStat: response.data.stats[3].base_stat,
+            atackName: response.data.stats[4].stat.name,
+            atackStat: response.data.stats[4].base_stat,
+            weight: response.data.weight,            
            }
           store.dispatch(putPoksInArray(res));
       })

@@ -86,6 +86,7 @@ const reducer = (state = initialState, action = {}) => {
         const newStr = item.url.slice(34,-1);
         // console.log(newStr);
         item.id = newStr;
+        item.face = true;
         //console.log(item);   
       });  
       //console.log('salllut', state.pokemonsData);       

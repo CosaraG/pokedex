@@ -8,6 +8,14 @@
         //justify-content: space-between;
         &-item {
             margin: 1em;
+            min-height: 15.5em;
+            &-desc {               
+                font-size: 1.2em;
+                text-align: left;
+                div {
+                    padding-bottom: .4em;
+                }             
+            }
         }
     }
 }
