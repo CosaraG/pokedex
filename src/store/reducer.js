@@ -138,6 +138,8 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         pokemonsWithId: state.pokemonsData,
+        filtredPokemonsData: state.pokemonsData,
+
       };
 
     default:
