@@ -6,8 +6,23 @@ import { Card, Icon } from 'semantic-ui-react'
 // == Import : local
 import './pokemonsList.scss';
 
+const res = {
+  id: 3,
+  speedName: 'speed',
+  speedStat: 49,
+  defenceName: 'defence',
+  defenceStat: 50,
+  atackName: 'attack',
+  atackStat: 9,
+  weightName: 'weight',   
+  weightStat: 56,         
+ }
+
 // == Composant
-const CardDetails = ({ id }) => (
+const CardDetails = ({
+  id, speedName, speedStat, defenceName, defenceStat,
+  atackName, atackStat, weightName, weightStat,
+}) => (
   <>
     
     <Card.Content extra>
@@ -15,19 +30,19 @@ const CardDetails = ({ id }) => (
       <Card.Description className="pokemonsList-container-item-desc">
         <div>
           <Icon name='tachometer alternate' />
-          <span> Speed: 49</span>
+          <span> {speedName}: {speedStat}</span>
           </div>
         <div>
           <Icon name='shield' />
-          <span> Defence: 49</span>
+          <span> {defenceName}: {defenceStat}</span>
           </div>
         <div>
           <Icon name='spy' />
-          <span> Attack: 49</span>         
+          <span> {atackName}: {atackStat}</span>   
           </div>
         <div>
           <Icon name='weight' />
-          <span> Weight: 69</span>
+          <span> {weightName}: {weightStat}</span>
         </div>
       </Card.Description>
     </Card.Content>    

@@ -14,13 +14,14 @@ const initialState = {
 // == Types
 const DO_SOMETHING = 'DO_SOMETHING';
 const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
+export const CHANGE_FACE = 'CHANGE_FACE';
 const LOADING_TRUE = 'LOADING_TRUE';
 const LOADING_FALSE = 'LOADING_FALSE';
 const PUT_DATA_WITH_ID = 'PUT_DATA_WITH_ID';
 const PUT_ID_IN_STORE = 'PUT_ID_IN_STORE';
 const PUT_FILTRED_DATA = 'PUT_FILTRED_DATA';
 const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA';
-const PUT_POKS_IN_ARRAY = 'PUT_POKS_IN_ARRAY';
+const ADD_POKS_DETAILS = 'ADD_POKS_DETAILS';
 const SHOW_POKEMONS = 'SHOW_POKEMONS';
 export const GO_SEARCH_POKEMONS = 'GO_SEARCH_POKEMONS';
 export const SEARCH_DETAILS = 'SEARCH_DETAILS';
@@ -39,6 +40,25 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+    case CHANGE_FACE: {
+      console.log(action.id);
+      
+      const newTask = state.filtredPokemonsData;
+      const taskModified = newTask.map(item => {
+        if(action.id == item.id) {
+          return {
+            ...item,
+            face: !item.face,
+          };
+        }
+        return item;
+      });
+      return {
+        ...state,
+        filtredPokemonsData: taskModified,
+      };      
+    }
+      
     case LOADING_TRUE:
       return {
         ...state,
@@ -67,14 +87,39 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         pokemonsData: action.results,
       };
-    case PUT_POKS_IN_ARRAY:
+    case  ADD_POKS_DETAILS: {
+      console.log(action.id);
+      
+      const newArr = state.filtredPokemonsData;
+      const arrModified = newArr.map(item => {
+        if(action.id == item.id) {
+          return {
+            ...item,
+            speedName: action.speedName,
+            speedStat: action.speedStat,
+            defenceName: action.defenceName,
+            defenceStat: action.defenceStat,
+            atackName: action.atackName,
+            atackStat: action.atackStat,
+            weightName: action.weightName,
+            weightStat: action.weightStat,
+          };
+        }
+        return item;
+      });
       return {
         ...state,
-        pokDetailsArray: [
-          ...state.pokDetailsArray,
-          action.data,
-        ],  
-      };
+        filtredPokemonsData: arrModified,
+      };      
+    }
+      
+      // return {
+      //   ...state,
+      //   pokDetailsArray: [
+      //     ...state.pokDetailsArray,
+      //     action.data,
+      //   ],  
+      // };
     case SHOW_POKEMONS:
       return {
         ...state,
@@ -110,6 +155,10 @@ export const changeInputValue = (value, name) => ({
   value,
   name,
 });
+export const changeFace = (id) => ({
+  type: CHANGE_FACE,
+  id,
+});
 export const filtredPokemonsData = (character) => ({
   type: PUT_FILTRED_DATA,
   character,  
@@ -141,9 +190,20 @@ export const putIdInStore = (id) => ({
   type: PUT_ID_IN_STORE,
   id,
 });
-export const putPoksInArray = (data) => ({
-  type: PUT_POKS_IN_ARRAY,
-  data,
+export const addPoksDetails = ({
+  id, speedName, speedStat, defenceName, defenceStat,
+  atackName, atackStat, weightName, weightStat
+}) => ({
+  type: ADD_POKS_DETAILS,
+  id,
+  speedName,
+  speedStat,
+  defenceName,
+  defenceStat,
+  atackName,
+  atackStat,
+  weightName,
+  weightStat,
 });
 
 // == Selectors

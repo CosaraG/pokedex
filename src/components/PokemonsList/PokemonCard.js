@@ -1,7 +1,7 @@
 // == Import : npm
 import React from 'react';
-import PropTypes from 'prop-types'
-import { Card } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
+import { Card } from 'semantic-ui-react';
 
 // == Import : local
 import './pokemonsList.scss';
@@ -10,11 +10,11 @@ import CardImage from 'src/components/pokemonsList/CardImage';
 import CardDetails from 'src/components/pokemonsList/CardDetails';
 
 // == Composant
-const PokemonCard = ({ name, id, face, searchDetails }) => (
+const PokemonCard = ({ name, id, face, searchDetails, pokDetails }) => (
   <>
     <Card className="pokemonsList-container-item" onClick={searchDetails(id)} >
       {face && <CardImage id={id} />}
-      {!face && <CardDetails id={id} />}   
+      {!face && <CardDetails id={id} {...pokDetails} />}   
       <Card.Content extra>
         <Card.Header className="pokemonsList-container-item-name">{name}</Card.Header>
       </Card.Content>    
@@ -27,6 +27,7 @@ PokemonCard.propTypes = {
     id: PropTypes.string.isRequired,
     face: PropTypes.bool.isRequired,
     searchDetails: PropTypes.func.isRequired,
+    pokDetails: PropTypes.object.isRequired,
 };
 
 // == Export

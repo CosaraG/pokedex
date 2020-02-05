@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PokemonsList from 'src/components/PokemonsList';
 
 // Action Creators
- import { searchDetails, putIdInStore } from 'src/store/reducer';
+ import { searchDetails, putIdInStore, changeFace } from 'src/store/reducer';
 
 const mapStateToProps = ({ pokemonsWithId }) => ({
   pokemonsWithId,

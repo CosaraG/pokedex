@@ -14,7 +14,7 @@ const PokemonsList = ({ pokemonsWithId, searchDetails }) => {
       <Card.Group itemsPerRow={8} className="pokemonsList-container">
        {
           pokemonsWithId.map((item) => (
-            <PokemonCard key={item.id} {...item} searchDetails={searchDetails} />
+            <PokemonCard key={item.id} pokDetails={item} {...item} searchDetails={searchDetails} />
           ))
         }
       </Card.Group>

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import {
   GO_SEARCH_POKEMONS, putPokemonsInData, putDataWithId, SEARCH_DETAILS,
-  putPoksInArray
+  addPoksDetails, changeFace,
 } from 'src/store/reducer';
-import { startLoading, finishLoading, } from './reducer';
+import { startLoading, finishLoading, showPokemons, } from './reducer';
 
 const logMiddleware = store => next => (action) => {
   //console.log('Je suis le middleware, et je laisse passer cette action: ', action);
@@ -42,9 +42,12 @@ const logMiddleware = store => next => (action) => {
             defenceStat: response.data.stats[3].base_stat,
             atackName: response.data.stats[4].stat.name,
             atackStat: response.data.stats[4].base_stat,
-            weight: response.data.weight,            
+            weightName: 'weight',
+            weightStat: response.data.weight,            
            }
-          store.dispatch(putPoksInArray(res));
+          store.dispatch(addPoksDetails(res));
+          store.dispatch(changeFace(res.id));
+          store.dispatch(showPokemons());
       })
       .catch((error) => {
         // console.log(error);
