@@ -8,13 +8,19 @@ import './pokemonsList.scss';
 import PokemonCard from './PokemonCard';
 
 // == Composant
-const PokemonsList = ({ filtredPokemonsData, searchDetails }) => {
+const PokemonsList = ({ filtredPokemonsData, searchDetails, exitFromCardDetails }) => {
   return (
     <div id="pokemonsList"  >
       <Card.Group itemsPerRow={8} className="pokemonsList-container">
        {
           filtredPokemonsData.map((item) => (
-            <PokemonCard key={item.id} pokDetails={item} {...item} searchDetails={searchDetails} />
+            <PokemonCard
+              key={item.id}
+              pokDetails={item}
+              {...item}
+              searchDetails={searchDetails}
+              exitFromCardDetails={exitFromCardDetails}
+              />
           ))
         }
       </Card.Group>

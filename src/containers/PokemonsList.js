@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PokemonsList from 'src/components/PokemonsList';
 
 // Action Creators
- import { searchDetails, putIdInStore } from 'src/store/reducer';
+ import { searchDetails, putIdInStore, exitFromCardDetails } from 'src/store/reducer';
 
 const mapStateToProps = ({ filtredPokemonsData }) => ({
   filtredPokemonsData,  
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => ({
   searchDetails: (id) => () => {
     dispatch(putIdInStore(id));
     dispatch(searchDetails());    
+  },
+  exitFromCardDetails: (id) => () => {
+    dispatch(exitFromCardDetails(id));
   },
 });
 

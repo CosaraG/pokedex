@@ -21,10 +21,10 @@ const res = {
 // == Composant
 const CardDetails = ({
   id, speedName, speedStat, defenceName, defenceStat,
-  atackName, atackStat, weightName, weightStat,
+  atackName, atackStat, weightName, weightStat, exitFromCardDetails
 }) => (
   <div className="pokemonsList-container-item-details">    
-    <Card.Content extra onClick={()=>{}} >
+    <Card.Content extra onClick={exitFromCardDetails(id)} >
       <Card.Header className="pokemonsList-container-item-details-name">Stats:</Card.Header>
       <Card.Description className="pokemonsList-container-item-details-desc">
         <div>
@@ -50,6 +50,7 @@ const CardDetails = ({
 
 CardDetails.propTypes = {
     id: PropTypes.string.isRequired,
+    exitFromCardDetails: PropTypes.func.isRequired,
 };
 
 // == Export

@@ -27,8 +27,10 @@ const logMiddleware = store => next => (action) => {
       break;
     }
     case SEARCH_DETAILS: {
-      //console.log(store.getState().pokemonId);      
-      store.dispatch(personalLoading(store.getState().pokemonId));
+      const { pokemonId } = store.getState();   
+      console.log('pokemonId', pokemonId);
+       
+      store.dispatch(personalLoading(pokemonId));
       axios.get(`https://pokeapi.co/api/v2/pokemon/${store.getState().pokemonId}/`)
         .then(response => {
            console.log('res',response.data);
@@ -50,7 +52,7 @@ const logMiddleware = store => next => (action) => {
         // console.log(error);
       })
       .finally(() => {
-        store.dispatch(personalLoading(store.getState().pokemonId));
+        store.dispatch(personalLoading(pokemonId));
 
       });
       break;

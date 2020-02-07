@@ -80,6 +80,7 @@ const reducer = (state = initialState, action = {}) => {
         filtredPokemonsData: taskModified,
       };      
     };
+    
       
     case LOADING:
       return {
@@ -204,6 +205,10 @@ export const addPoksDetails = ({
   atackStat,
   weightName,
   weightStat,
+});
+export const exitFromCardDetails = (id) => ({
+  type: CHANGE_FACE,
+  id,
 });
 
 // == Selectors
