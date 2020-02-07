@@ -9,13 +9,24 @@
         &-item {
             margin: 1em;
             min-height: 15.5em;
-            &-desc {               
+            &-image, {
+                cursor: pointer;
+            }
+            &-details {
+                cursor: pointer;
                 font-size: 1.2em;
                 text-align: left;
                 div {
                     padding-bottom: .4em;
-                }             
-            }
+                }
+                &-name {
+                    text-align: center;
+                    font-weight: bold;
+                }   
+                &-desc {
+                    padding-left: .5em;
+                }
+            }          
         }
     }
 }

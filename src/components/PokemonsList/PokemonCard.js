@@ -10,10 +10,11 @@ import CardImage from 'src/components/pokemonsList/CardImage';
 import CardDetails from 'src/components/pokemonsList/CardDetails';
 
 // == Composant
-const PokemonCard = ({ name, id, face, searchDetails, pokDetails }) => (
+const PokemonCard = ({ name, id, face, searchDetails, pokDetails, personalLoading }) => (
   <>
-    <Card className="pokemonsList-container-item" onClick={searchDetails(id)} >
-      {face && <CardImage id={id} />}
+    <Card className="pokemonsList-container-item" >
+      {personalLoading && <div>Loading</div>}
+      {!personalLoading && face && <CardImage id={id} searchDetails={searchDetails} />}
       {!face && <CardDetails id={id} {...pokDetails} />}   
       <Card.Content extra>
         <Card.Header className="pokemonsList-container-item-name">{name}</Card.Header>
@@ -26,6 +27,7 @@ PokemonCard.propTypes = {
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     face: PropTypes.bool.isRequired,
+    personalLoading: PropTypes.bool.isRequired,
     searchDetails: PropTypes.func.isRequired,
     pokDetails: PropTypes.object.isRequired,
 };

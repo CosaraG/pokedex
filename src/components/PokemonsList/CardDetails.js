@@ -23,11 +23,10 @@ const CardDetails = ({
   id, speedName, speedStat, defenceName, defenceStat,
   atackName, atackStat, weightName, weightStat,
 }) => (
-  <>
-    
-    <Card.Content extra>
-      <Card.Header className="pokemonsList-container-item-name">Stats:</Card.Header>
-      <Card.Description className="pokemonsList-container-item-desc">
+  <div className="pokemonsList-container-item-details">    
+    <Card.Content extra onClick={()=>{}} >
+      <Card.Header className="pokemonsList-container-item-details-name">Stats:</Card.Header>
+      <Card.Description className="pokemonsList-container-item-details-desc">
         <div>
           <Icon name='tachometer alternate' />
           <span> {speedName}: {speedStat}</span>
@@ -46,7 +45,7 @@ const CardDetails = ({
         </div>
       </Card.Description>
     </Card.Content>    
-  </>
+  </div>
 );
 
 CardDetails.propTypes = {

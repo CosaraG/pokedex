@@ -1,9 +1,8 @@
 import axios from 'axios';
 import {
   GO_SEARCH_POKEMONS, putPokemonsInData, putDataWithId, SEARCH_DETAILS,
-  addPoksDetails, changeFace,
+  addPoksDetails, changeFace, personalLoading, loading
 } from 'src/store/reducer';
-import { startLoading, finishLoading, showPokemons, } from './reducer';
 
 const logMiddleware = store => next => (action) => {
   //console.log('Je suis le middleware, et je laisse passer cette action: ', action);
@@ -11,7 +10,7 @@ const logMiddleware = store => next => (action) => {
 
   switch (action.type) {
     case GO_SEARCH_POKEMONS: {
-      store.dispatch(startLoading());
+      store.dispatch(loading());
       axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=784')
         .then(response => {
            //console.log('res',response.data.results);
@@ -23,14 +22,13 @@ const logMiddleware = store => next => (action) => {
         // console.log(error);
       })
       .finally(() => {
-        store.dispatch(finishLoading());
+        store.dispatch(loading());
       });
       break;
     }
     case SEARCH_DETAILS: {
-      console.log(store.getState().pokemonId);
-      
-      //store.dispatch(startLoading());
+      //console.log(store.getState().pokemonId);      
+      store.dispatch(personalLoading(store.getState().pokemonId));
       axios.get(`https://pokeapi.co/api/v2/pokemon/${store.getState().pokemonId}/`)
         .then(response => {
            console.log('res',response.data);
@@ -47,13 +45,13 @@ const logMiddleware = store => next => (action) => {
            }
           store.dispatch(addPoksDetails(res));
           store.dispatch(changeFace(res.id));
-          store.dispatch(showPokemons());
       })
       .catch((error) => {
         // console.log(error);
       })
       .finally(() => {
-        //store.dispatch(finishLoading());
+        store.dispatch(personalLoading(store.getState().pokemonId));
+
       });
       break;
     }
