@@ -212,6 +212,20 @@ export const exitFromCardDetails = (id) => ({
 });
 
 // == Selectors
+const getDetails = (cards) => cards.filter(card => !card.face);
+const getImages = (cards) => cards.filter(card => card.face);
+
+export const getSortedList = cards => {
+  const detailsList = getDetails(cards);
+  const imagesList = getImages(cards);
+
+  const sortedList = [
+    ...detailsList,
+    ...imagesList,
+  ];
+  return sortedList;
+};
+
 
 // == Export
 export default reducer;

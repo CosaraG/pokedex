@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 import PokemonsList from 'src/components/PokemonsList';
 
 // Action Creators
- import { searchDetails, putIdInStore, exitFromCardDetails } from 'src/store/reducer';
+ import {
+   searchDetails, putIdInStore, exitFromCardDetails, getSortedList
+  } from 'src/store/reducer';
 
-const mapStateToProps = ({ filtredPokemonsData }) => ({
-  filtredPokemonsData,  
+const mapStateToProps = (state) => ({
+  filtredPokemonsData: getSortedList(state.filtredPokemonsData), 
 });
 
 
