@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import InputField from 'src/components/InputField';
 
 // Action Creators
-import { filtredPokemonsData, changeInputValue, showPokemons } from 'src/store/reducer';
+import {
+  filtredPokemonsData, changeInputValue, showPokemons, setInputFieldFromStorage,
+} from 'src/store/reducer';
 
 const mapStateToProps = ({ inputField }) => ({
   inputField,
@@ -21,6 +23,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   showPokemons: () => {
     dispatch(showPokemons());
+  },
+  setInputFieldFromStorage: value => {
+    dispatch(setInputFieldFromStorage(value));
   },
 });
 

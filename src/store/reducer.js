@@ -22,6 +22,7 @@ const PUT_DATA_WITH_ID = 'PUT_DATA_WITH_ID';
 const PUT_ID_IN_STORE = 'PUT_ID_IN_STORE';
 const PUT_FILTRED_DATA = 'PUT_FILTRED_DATA';
 const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA';
+const SET_INPUT_FROM_STORAGE = 'SET_INPUT_FROM_STORAGE';
 const SHOW_POKEMONS = 'SHOW_POKEMONS';
 export const GO_SEARCH_POKEMONS = 'GO_SEARCH_POKEMONS';
 export const SEARCH_DETAILS = 'SEARCH_DETAILS';
@@ -140,6 +141,11 @@ const reducer = (state = initialState, action = {}) => {
         filtredPokemonsData: state.pokemonsData,
 
       };
+    case SET_INPUT_FROM_STORAGE:
+      return {
+        ...state,
+        inputField: action.value,
+      };
     default:
       return state;
   }
@@ -186,6 +192,10 @@ export const putDataWithId = () => ({
 });
 export const searchDetails = () => ({
   type: SEARCH_DETAILS,
+});
+export const setInputFieldFromStorage = (value) => ({
+  type: SET_INPUT_FROM_STORAGE,
+  value,
 });
 export const putIdInStore = (id) => ({
   type: PUT_ID_IN_STORE,

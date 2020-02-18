@@ -7,32 +7,49 @@ import PropTypes from 'prop-types';
 import './inputField.scss';
 
 // == Composant
-const InputField = ({ 
-    inputField, changeInputValue, filtredPokemonsData, showPokemons,
-}) => {
-    const handleChange = e => {
+class InputField extends React.Component {
+
+    componentDidMount() {
+        const { setInputFieldFromStorage } = this.props;
+        const getFromStorage = localStorage['inputField'];
+        console.log(getFromStorage);        
+        setInputFieldFromStorage(getFromStorage);
+    }
+
+    componentDidUpdate() {
+        const { inputField } = this.props;
+        localStorage['inputField'] = inputField;
+    }
+
+    handleChange = e => {
         const { value, name } = e.target;
+        const { changeInputValue, filtredPokemonsData, showPokemons } = this.props;
         changeInputValue(value, name);
         filtredPokemonsData(value);
         showPokemons();
     }
-    return (
-        <div id="inputField">
-            <Input 
-              value={inputField}
-              name="inputField"
-              placeholder='Search...'
-              onChange={handleChange}
-          />
-        </div>
-    );
-} 
+   
+    render() {
+        const {  inputField } = this.props;
+        return (
+            <div id="inputField">
+                <Input 
+                  value={inputField}
+                  name="inputField"
+                  placeholder='Search...'
+                  onChange={this.handleChange}
+              />
+            </div>
+        );
+    }
+};
 
 InputField.propTypes = {
     inputField: PropTypes.string.isRequired,
     changeInputValue: PropTypes.func.isRequired,
     filtredPokemonsData: PropTypes.func.isRequired,
     showPokemons: PropTypes.func.isRequired,
+    setInputFieldFromStorage: PropTypes.func.isRequired,
 };
 
 // == Export
