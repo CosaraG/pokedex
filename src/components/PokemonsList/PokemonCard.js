@@ -8,6 +8,8 @@ import './pokemonsList.scss';
 
 import CardImage from 'src/components/pokemonsList/CardImage';
 import CardDetails from 'src/components/pokemonsList/CardDetails';
+import PersonalLoading from 'src/components/PersonalLoading';
+
 
 // == Composant
 const PokemonCard = ({
@@ -16,9 +18,11 @@ const PokemonCard = ({
 }) => (
   <>
     <Card className="pokemonsList-container-item" >
-      {personalLoading && <div>Loading</div>}
-      {!personalLoading && face && <CardImage id={id} searchDetails={searchDetails} />}
-      {!face && <CardDetails id={id} {...pokDetails} exitFromCardDetails={exitFromCardDetails} />}   
+      <Card.Content className="pokemonsList-container-item-content">
+        {personalLoading && <PersonalLoading />}
+        {!personalLoading && face && <CardImage id={id} searchDetails={searchDetails} />}
+        {!face && <CardDetails id={id} {...pokDetails} exitFromCardDetails={exitFromCardDetails} />}   
+      </Card.Content> 
       <Card.Content extra>
         <Card.Header className="pokemonsList-container-item-name">{name}</Card.Header>
       </Card.Content>    

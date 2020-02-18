@@ -10,8 +10,8 @@ import PokemonCard from './PokemonCard';
 // == Composant
 const PokemonsList = ({ filtredPokemonsData, searchDetails, exitFromCardDetails }) => {
   return (
-    <div id="pokemonsList"  >
-      <Card.Group itemsPerRow={8} className="pokemonsList-container">
+    <div className="pokemonsList"  >
+      <Card.Group itemsPerRow={7} className="pokemonsList-container">
        {
           filtredPokemonsData.map((item) => (
             <PokemonCard
