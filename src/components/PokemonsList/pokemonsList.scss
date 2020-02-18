@@ -18,6 +18,9 @@
             }
             &-image {
                 padding-top: 1em;
+                img {
+                    width: 70%;
+                }
             }           
             &-details {
                 cursor: pointer;
