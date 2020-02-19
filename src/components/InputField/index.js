@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
@@ -10,6 +10,11 @@ import './inputField.scss';
 const InputField = ({ 
     inputField, changeInputValue, filtredPokemonsData, showPokemons,
 }) => {
+
+    useEffect(()=>{
+        localStorage.setItem('inputField', inputField);
+    });
+
     const handleChange = e => {
         const { value, name } = e.target;
         changeInputValue(value, name);

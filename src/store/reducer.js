@@ -2,7 +2,7 @@
 
 // == Initial State
 const initialState = {
-  inputField: '',
+  inputField: localStorage.getItem('inputField'),
   loadingStatus: false,
   pokemonsData: [],
   pokemonsWithId: [],
