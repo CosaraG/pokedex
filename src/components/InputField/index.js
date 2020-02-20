@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 // == Import : local
 import './inputField.scss';
+import { loadState } from '../../store/localStorage';
 
 // == Composant
 const InputField = ({ 
@@ -12,11 +13,8 @@ const InputField = ({
     setInputFieldFromStorage,
 }) => {
     useEffect(()=>{
-        console.log('get');        
-        const newVal = localStorage.getItem('inputField');
-        console.log('newVal',newVal);
-        setInputFieldFromStorage(newVal);
-
+        console.log('newVal',loadState().inputField);        
+        setInputFieldFromStorage(loadState().inputField);
     }, []);
     
     const handleChange = e => {
@@ -24,7 +22,7 @@ const InputField = ({
         changeInputValue(value, name);
         filtredPokemonsData(value);
         showPokemons();
-        localStorage.setItem('inputField', value);
+       // localStorage.setItem('inputField', value);
     }
     return (
         <div id="inputField">
