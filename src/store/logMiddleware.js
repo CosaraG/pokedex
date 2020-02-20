@@ -13,13 +13,13 @@ const logMiddleware = store => next => (action) => {
       store.dispatch(loading());
       axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=784')
         .then(response => {
-           //console.log('res',response.data.results);
+           console.log('res',response.data.results);
           const { results } = response.data;
           store.dispatch(putPokemonsInData(results));
           store.dispatch(putDataWithId());
       })
       .catch((error) => {
-        // console.log(error);
+         console.log(error);
       })
       .finally(() => {
         store.dispatch(loading());

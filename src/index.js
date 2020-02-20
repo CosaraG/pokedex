@@ -7,6 +7,13 @@ import 'semantic-ui-css/semantic.min.css'
 // == Import : local
 import App from 'src/containers/App';
 import store from 'src/store';
+import { saveState } from './store/localStorage';
+
+// store.subscribe(()=>{
+//   saveState({
+//     inputField: store.getState().inputField
+//   })
+// })
 
 // == Render
 // 1. Le composant racine (celui qui contient l'ensemble de l'app)

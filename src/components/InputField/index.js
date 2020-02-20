@@ -9,17 +9,22 @@ import './inputField.scss';
 // == Composant
 const InputField = ({ 
     inputField, changeInputValue, filtredPokemonsData, showPokemons,
+    setInputFieldFromStorage,
 }) => {
-
     useEffect(()=>{
-        localStorage.setItem('inputField', inputField);
-    });
+        console.log('get');        
+        const newVal = localStorage.getItem('inputField');
+        console.log('newVal',newVal);
+        setInputFieldFromStorage(newVal);
 
+    }, []);
+    
     const handleChange = e => {
         const { value, name } = e.target;
         changeInputValue(value, name);
         filtredPokemonsData(value);
         showPokemons();
+        localStorage.setItem('inputField', value);
     }
     return (
         <div id="inputField">
@@ -38,6 +43,7 @@ InputField.propTypes = {
     changeInputValue: PropTypes.func.isRequired,
     filtredPokemonsData: PropTypes.func.isRequired,
     showPokemons: PropTypes.func.isRequired,
+    setInputFieldFromStorage: PropTypes.func.isRequired,
 };
 
 // == Export

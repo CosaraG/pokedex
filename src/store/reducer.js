@@ -2,7 +2,7 @@
 
 // == Initial State
 const initialState = {
-  inputField: localStorage.getItem('inputField'),
+  inputField:  '',
   loadingStatus: false,
   pokemonsData: [],
   pokemonsWithId: [],
@@ -23,6 +23,7 @@ const PUT_ID_IN_STORE = 'PUT_ID_IN_STORE';
 const PUT_FILTRED_DATA = 'PUT_FILTRED_DATA';
 const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA';
 const SHOW_POKEMONS = 'SHOW_POKEMONS';
+const SET_INPUT_FROM_STORAGE = 'SET_INPUT_FROM_STORAGE';
 export const GO_SEARCH_POKEMONS = 'GO_SEARCH_POKEMONS';
 export const SEARCH_DETAILS = 'SEARCH_DETAILS';
 
@@ -140,6 +141,13 @@ const reducer = (state = initialState, action = {}) => {
         filtredPokemonsData: state.pokemonsData,
 
       };
+      case SET_INPUT_FROM_STORAGE:
+        console.log('action.value',action.value);
+        
+      return {
+        ...state,
+        inputField: action.value,
+      };
     default:
       return state;
   }
@@ -149,6 +157,10 @@ const reducer = (state = initialState, action = {}) => {
 export const doSomething = message => ({
   type: DO_SOMETHING,
   message,
+});
+export const setInputFieldFromStorage = (value) => ({
+  type: SET_INPUT_FROM_STORAGE,
+  value,
 });
 export const changeInputValue = (value, name) => ({
   type: CHANGE_INPUT_VALUE,
