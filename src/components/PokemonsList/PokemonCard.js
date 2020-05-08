@@ -6,8 +6,8 @@ import { Card } from 'semantic-ui-react';
 // == Import : local
 import './pokemonsList.scss';
 
-import CardImage from 'src/components/pokemonsList/CardImage';
-import CardDetails from 'src/components/pokemonsList/CardDetails';
+import CardImage from 'src/components/PokemonsList/CardImage';
+import CardDetails from 'src/components/PokemonsList/CardDetails';
 import PersonalLoading from 'src/components/PersonalLoading';
 
 
