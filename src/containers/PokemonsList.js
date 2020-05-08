@@ -12,7 +12,6 @@ import PokemonsList from 'src/components/PokemonsList';
 const mapStateToProps = (state) => ({
   filtredPokemonsData: getSortedList(state.filtredPokemonsData), 
 });
-0
 
 const mapDispatchToProps = (dispatch) => ({
   searchDetails: (id) => () => {

@@ -1,5 +1,3 @@
-//import data from 'src/data/pokemons.js';
-
 // == Initial State
 const initialState = {
   inputField: '', // input field for searching pokemon
@@ -21,7 +19,8 @@ const PUT_FILTRED_DATA = 'PUT_FILTRED_DATA';
 const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA'; // fills the data from request response for state.pokemonsData
 const SHOW_POKEMONS = 'SHOW_POKEMONS';
 export const GO_SEARCH_POKEMONS = 'GO_SEARCH_POKEMONS'; // makes a request in MW for state.pokemonsData
-export const SEARCH_DETAILS = 'SEARCH_DETAILS'; // makes a request in MW for state.pokDetailsArray
+export const SEARCH_DETAILS = 'SEARCH_DETAILS';
+// makes a request in MW for state.pokDetailsArray
 
 
 // == Reducer

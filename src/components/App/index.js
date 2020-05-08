@@ -1,5 +1,5 @@
 // == Import : npm
-import React, { useEffect, Suspense } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
@@ -11,7 +11,7 @@ import PokemonsList from 'src/containers/PokemonsList';
 // == Composant
 const App = ({ searchPokemons, loadingStatus }) => {
   useEffect(() => {
-    searchPokemons();
+    searchPokemons(); // load the pokemons in the beggning of the app
   }, []);
   return (
     <div id="app">      

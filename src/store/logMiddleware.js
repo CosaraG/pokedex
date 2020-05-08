@@ -28,8 +28,6 @@ const logMiddleware = store => next => (action) => {
     }
     case SEARCH_DETAILS: {
       const  pokemonId = action.id;   
-      console.log('action', action);
-       
       store.dispatch(personalLoading(pokemonId));
       axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
         .then(response => {
