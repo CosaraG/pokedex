@@ -2,39 +2,31 @@
 
 // == Initial State
 const initialState = {
-  inputField: '',
-  loadingStatus: false,
-  pokemonsData: [],
-  pokemonsWithId: [],
-  filtredPokemonsData: [],
-  pokemonId: '',
-  pokDetailsArray: [],
+  inputField: '', // input field for searching pokemon
+  loadingStatus: false, // for showing the loading gif in the beggining
+  pokemonsData: [], // array of pokemons without id
+  pokemonsWithId: [], // array of pokemons with id
+  filtredPokemonsData: [], // array of pokemons filtred
+  pokDetailsArray: [], // details array of a pokemon
 };
 
 // == Types
 const ADD_POKS_DETAILS = 'ADD_POKS_DETAILS';
-const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE';
-const CHANGE_FACE = 'CHANGE_FACE';
-const DO_SOMETHING = 'DO_SOMETHING';
-const LOADING = 'LOADING';
-const PERSONAL_LOADING = 'PERSONAL_LOADING';
-const PUT_DATA_WITH_ID = 'PUT_DATA_WITH_ID';
-const PUT_ID_IN_STORE = 'PUT_ID_IN_STORE';
+const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE'; // controlled field for state.inputField
+const CHANGE_FACE = 'CHANGE_FACE'; // switches the sides of a card
+const LOADING = 'LOADING'; // switches the loading status for state.loadingStatus
+const PERSONAL_LOADING = 'PERSONAL_LOADING'; // switches the loading status for one pokemon
+const PUT_DATA_WITH_ID = 'PUT_DATA_WITH_ID'; // fills the data with id
 const PUT_FILTRED_DATA = 'PUT_FILTRED_DATA';
-const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA';
+const PUT_POKEMONS_IN_DATA = 'PUT_POKEMONS_IN_DATA'; // fills the data from request response for state.pokemonsData
 const SHOW_POKEMONS = 'SHOW_POKEMONS';
-export const GO_SEARCH_POKEMONS = 'GO_SEARCH_POKEMONS';
-export const SEARCH_DETAILS = 'SEARCH_DETAILS';
+export const GO_SEARCH_POKEMONS = 'GO_SEARCH_POKEMONS'; // makes a request in MW for state.pokemonsData
+export const SEARCH_DETAILS = 'SEARCH_DETAILS'; // makes a request in MW for state.pokDetailsArray
 
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
-  switch (action.type) {
-    case DO_SOMETHING:
-      return {
-        ...state,
-        message: action.message,
-      };
+  switch (action.type) {  
       case ADD_POKS_DETAILS: {
         //console.log(action.id);        
         const newArr = state.filtredPokemonsData;
@@ -107,13 +99,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         filtredPokemonsData: filtredData,
-      };
-    case PUT_ID_IN_STORE:
-      return {
-        ...state,
-        pokemonId: action.id,
-      };
-    
+      };    
     case PUT_POKEMONS_IN_DATA:
       return {
         ...state,
@@ -146,10 +132,6 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // == Action Creators
-export const doSomething = message => ({
-  type: DO_SOMETHING,
-  message,
-});
 export const changeInputValue = (value, name) => ({
   type: CHANGE_INPUT_VALUE,
   value,
@@ -184,11 +166,8 @@ export const personalLoading = (id) => ({
 export const putDataWithId = () => ({
   type: PUT_DATA_WITH_ID,
 });
-export const searchDetails = () => ({
+export const searchDetails = (id) => ({
   type: SEARCH_DETAILS,
-});
-export const putIdInStore = (id) => ({
-  type: PUT_ID_IN_STORE,
   id,
 });
 export const addPoksDetails = ({

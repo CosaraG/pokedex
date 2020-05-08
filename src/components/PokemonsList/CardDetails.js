@@ -6,18 +6,6 @@ import { Card, Icon } from 'semantic-ui-react'
 // == Import : local
 import './pokemonsList.scss';
 
-const res = {
-  id: 3,
-  speedName: 'speed',
-  speedStat: 49,
-  defenceName: 'defence',
-  defenceStat: 50,
-  atackName: 'attack',
-  atackStat: 9,
-  weightName: 'weight',   
-  weightStat: 56,         
- }
-
 // == Composant
 const CardDetails = ({
   id, speedName, speedStat, defenceName, defenceStat,

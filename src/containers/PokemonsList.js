@@ -6,7 +6,7 @@ import PokemonsList from 'src/components/PokemonsList';
 
 // Action Creators
  import {
-   searchDetails, putIdInStore, exitFromCardDetails, getSortedList
+   searchDetails, exitFromCardDetails, getSortedList
   } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
@@ -16,8 +16,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   searchDetails: (id) => () => {
-    dispatch(putIdInStore(id));
-    dispatch(searchDetails());    
+    dispatch(searchDetails(id));    
   },
   exitFromCardDetails: (id) => () => {
     dispatch(exitFromCardDetails(id));
